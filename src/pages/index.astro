@@ -7,23 +7,38 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout>
-	<div class="hero-content">
-		<h1>Welcome to the Denton County Homebrewers Guild!</h1>
-		<p>Brewing, Sharing, Learning</p>
-	</div>
+	<section class="section pt-14">
+		<div class="hero-content">
+			<div class="hero-text">
+				<h1>Welcome to the Denton County Homebrewers Guild!</h1>
+				<p>Brewing, Sharing, Learning</p>
+			</div>
+		</div>
+	</section>
+
+	<style>
+		.hero-content {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100%;
+			padding: 2rem;
+		}
+
+		.hero-text {
+			text-align: center;
+		}
+
+		.hero-text h1 {
+			color: white;
+			text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+			margin-bottom: 1rem;
+		}
+
+		.hero-text p {
+			color: white;
+			text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+			font-size: 1.25rem;
+		}
+	</style>
 </Layout>
-
-<style>
-	.hero-content {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		padding: 2rem;
-		color: white;
-	}
-
-	.hero-content p {
-		text-align: center;
-		text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-	}
-</style>
