@@ -1,0 +1,19 @@
+{
+  "main": [
+    {
+      "name": "facebook",
+      "icon": "FaFacebook",
+      "link": "https://www.facebook.com/DentonCountyHomebrewersGuild/"
+    },
+    {
+      "name": "Texas Redcoat Challenge",
+      "icon": "FaWebAwesome",
+      "link": "https://texasredcoat.com/"
+    },
+    {
+      "name": "youtube",
+      "icon": "FaYoutube",
+      "link": "https://www.youtube.com/@dchgadmin"
+    }
+  ]
+}

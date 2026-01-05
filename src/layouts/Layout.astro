@@ -1,15 +1,22 @@
+---
+import "../styles/main.css";
+import Footer from "../layouts/Footer.astro";
+---
+
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="stylesheet" href="/styles/main.css" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<title>Denton County Homebrewers Guild</title>
 	</head>
 	<body>
 		<slot />
 	</body>
+	<Footer />
 </html>
 
 <style>
