@@ -5,10 +5,13 @@ import socials from "../config/socials.json";
 
 <footer>
   <div class="container">
-    <div class="row items-center py-10 px-6 pb-8">
+    <div
+      class="row py-10 px-6 pb-8"
+      style="display: flex; align-items: center; justify-content: space-between;"
+    >
       <div
-        class="text-center lg:col-3 lg:text-left flex items-center justify-center lg:justify-start -mb-4"
-        style="margin-bottom: -2.5rem !important; padding-left: 3rem !important;"
+        class="text-center lg:col-3 lg:text-left flex justify-center lg:justify-start"
+        style="padding-left: 3rem !important; margin-left: 1rem !important; align-items: center;"
       >
         <a href="/" class="navbar-brand inline-flex items-center">
           <img src="/images/logo.png" height="48" width="48" alt="Logo" />
@@ -16,7 +19,8 @@ import socials from "../config/socials.json";
       </div>
       <div class="lg:col-6"></div>
       <div
-        class="text-center lg:col-3 lg:mb-0 lg:mt-0 lg:text-right flex items-center justify-center lg:justify-end lg:pr-10"
+        class="text-center lg:col-3 lg:mb-0 lg:mt-0 lg:text-right flex items-center"
+        style="justify-content: flex-end !important; padding-right: 3rem !important; margin-right: 1rem !important;"
       >
         <Social source={socials} className="social-icons" />
       </div>
