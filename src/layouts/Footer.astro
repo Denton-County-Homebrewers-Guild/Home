@@ -13,8 +13,16 @@ import socials from "../config/socials.json";
         class="text-center lg:col-3 lg:text-left flex justify-center lg:justify-start"
         style="padding-left: 3rem !important; margin-left: 1rem !important; align-items: center;"
       >
-        <a href="/" class="navbar-brand inline-flex items-center">
-          <img src="/images/logo.png" height="48" width="48" alt="Logo" />
+        <a
+          href={import.meta.env.BASE_URL}
+          class="navbar-brand inline-flex items-center"
+        >
+          <img
+            src={`${import.meta.env.BASE_URL}images/logo.png`}
+            height="48"
+            width="48"
+            alt="Logo"
+          />
         </a>
       </div>
       <div class="lg:col-6"></div>
