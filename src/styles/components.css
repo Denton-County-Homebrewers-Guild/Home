@@ -20,14 +20,14 @@
   margin: 0 !important;
 }
 .social-icons li {
-  @apply inline-flex text-white;
+  @apply inline-flex ;
   display: inline-flex !important;
 }
 .social-icons li a {
-  @apply flex h-9 w-9 items-center justify-center text-center leading-9 text-white;
+  @apply flex h-9 w-9 items-center justify-center text-center leading-9;
 }
 .social-icons li a svg {
-  @apply h-5 w-5 text-white;
+  @apply h-5 w-5 ;
 }
 
 /* notice */

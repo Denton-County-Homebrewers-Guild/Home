@@ -11,26 +11,20 @@ export interface ISocial {
 
 <ul
   class={`flex flex-row gap-4 list-none p-0 m-0 ${className}`}
-  style="display: flex !important; flex-direction: row !important; gap: 1rem !important; justify-content: flex-end !important;"
+  style="display: flex !important; flex-direction: row !important; gap: 1rem !important; justify-content: flex-end !important; margin-right: 6rem !important; color: lightgray !important;"
 >
   {
     source.main.map((social: ISocial) => (
-      <li class="inline-flex" style="display: inline-flex;">
+      <li class="inline-flex">
         <a
           aria-label={social.name}
           href={social.link}
           target="_blank"
           rel="noopener noreferrer nofollow"
           class="text-white inline-flex items-center hover:opacity-80 transition-opacity h-9 w-9 justify-center"
-          style="color: white;"
         >
           <span class="sr-only">{social.name}</span>
-          <DynamicIcon
-            className="h-5 w-5"
-            icon={social.icon}
-            client:load
-            style="color: white;"
-          />
+          <DynamicIcon className="h-5 w-5" icon={social.icon} client:load />
         </a>
       </li>
     ))

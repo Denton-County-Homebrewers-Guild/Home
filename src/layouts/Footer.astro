@@ -5,16 +5,18 @@ import socials from "../config/socials.json";
 
 <footer>
   <div class="container">
-    <div class="row items-center py-10">
+    <div class="row items-center py-10 px-6 pb-8">
       <div
-        class="text-center lg:col-3 lg:mb-0 lg:text-left flex items-center justify-center lg:justify-start"
+        class="text-center lg:col-3 lg:text-left flex items-center justify-center lg:justify-start -mb-4"
+        style="margin-bottom: -2.5rem !important; padding-left: 3rem !important;"
       >
         <a href="/" class="navbar-brand inline-flex items-center">
           <img src="/images/logo.png" height="48" width="48" alt="Logo" />
         </a>
       </div>
+      <div class="lg:col-6"></div>
       <div
-        class="text-center lg:col-3 lg:mb-0 lg:mt-0 lg:text-right flex items-center justify-center lg:justify-end"
+        class="text-center lg:col-3 lg:mb-0 lg:mt-0 lg:text-right flex items-center justify-center lg:justify-end lg:pr-10"
       >
         <Social source={socials} className="social-icons" />
       </div>

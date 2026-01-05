@@ -9,14 +9,17 @@ import Footer from "../layouts/Footer.astro";
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="stylesheet" href="/styles/main.css" />
 		<meta name="generator" content={Astro.generator} />
 		<title>Denton County Homebrewers Guild</title>
 	</head>
 	<body>
-		<slot />
+		<div class="page-wrapper">
+			<main class="content">
+				<slot />
+			</main>
+			<Footer />
+		</div>
 	</body>
-	<Footer />
 </html>
 
 <style>
@@ -25,5 +28,32 @@ import Footer from "../layouts/Footer.astro";
 		margin: 0;
 		width: 100%;
 		height: 100%;
+		position: relative;
+	}
+
+	body::before {
+		content: "";
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-image: url("/images/beer-glass.jpg");
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
+		filter: blur(6px);
+		z-index: -1;
+	}
+
+	.page-wrapper {
+		min-height: 100vh;
+		display: flex;
+		flex-direction: column;
+		padding-bottom: 2rem;
+	}
+
+	.content {
+		flex: 1;
 	}
 </style>
