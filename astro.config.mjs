@@ -10,4 +10,5 @@ export default defineConfig({
   base: isProd ? '/Home' : undefined,
   trailingSlash: 'always',
   integrations: [react()],
+  devToolbar:{ enabled: true }
 });

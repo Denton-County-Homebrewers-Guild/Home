@@ -1,0 +1,54 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout class="pt-64">
+  <section class="section min-h-screen flex items-center justify-center pt-64">
+    <div id="container" class="container">
+      <div
+        class="justify-center color-white text-center text-white p-12"
+        style="color:white;"
+      >
+        Annual Membership to the Denton County Homebrewers Guild is $30.00 per
+        year. Membership includes access to all club events, meetings, and
+        competitions. To join, please submit your payment via <a
+          href="https://www.paypal.com/ncp/payment/3EGBKGH8TN57U"
+          target="_blank">PayPal</a
+        >
+      </div>
+    </div>
+  </section>
+</Layout>
+<style>
+  #container {
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  #container h3 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    border-bottom: 2px solid #ffcc00;
+    padding-bottom: 0.5rem;
+  }
+
+  #container p {
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+
+  #container a {
+    color: #ffcc00;
+    text-decoration: underline;
+  }
+
+  #container a:hover {
+    color: #ffaa00;
+  }
+</style>

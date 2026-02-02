@@ -1,6 +1,7 @@
 ---
 import Welcome from "../components/Welcome.astro";
 import Layout from "../layouts/Layout.astro";
+import FindUs from "../components/FindUs.astro";
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
@@ -14,31 +15,62 @@ import Layout from "../layouts/Layout.astro";
 				<p>Brewing, Sharing, Learning</p>
 			</div>
 		</div>
+		<div class="content flex justify-center">
+			<div class="w-full max-w-xl justify-center">
+				<blockquote>
+					<p>
+						"The DCHG was created to fill a void in the Denton area for home
+						brewers to come together with the common interest in brewing
+						handcrafted beer in their own homes as well as help each other and
+						their community."
+						<br /><span>- Denton County Homebrewers Guild</span>
+					</p>
+				</blockquote>
+			</div>
+			<style>
+				.hero-content {
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					height: 100%;
+					padding: 2rem;
+				}
+
+				.hero-text {
+					text-align: center;
+				}
+
+				.hero-text h1 {
+					color: white;
+					text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+					margin-bottom: 1rem;
+				}
+
+				.hero-text p {
+					color: white;
+					text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+					font-size: 1.25rem;
+				}
+				#quote {
+					color: white;
+					text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+					margin-bottom: 1rem;
+					text-align: center;
+				}
+				blockquote {
+					text-align: center;
+					margin: 6rem auto;
+					padding: 1.5rem;
+					max-width: 600px;
+				}
+				blockquote p {
+					font-size: 1.125rem;
+					line-height: 1.5;
+					text-align: center;
+					color: #fff;
+				}
+			</style>
+		</div>
 	</section>
-
-	<style>
-		.hero-content {
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			height: 100%;
-			padding: 2rem;
-		}
-
-		.hero-text {
-			text-align: center;
-		}
-
-		.hero-text h1 {
-			color: white;
-			text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-			margin-bottom: 1rem;
-		}
-
-		.hero-text p {
-			color: white;
-			text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-			font-size: 1.25rem;
-		}
-	</style>
+	<FindUs />
 </Layout>

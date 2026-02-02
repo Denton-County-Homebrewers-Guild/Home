@@ -1,0 +1,58 @@
+<div id="container">
+  <h3>Find Us</h3>
+  <p>
+    The Guild meets on the first Sunday at 2 PM at
+    <a href="https://maps.app.goo.gl/pqAJTLPENTbwB69y5" target="_blank"
+      >Denton County Brewing Company</a
+    >
+    Any updates to meeting locations or times will be posted on our
+    <a
+      href={`${import.meta.env.BASE_URL}Events/`}
+      class="navbar-brand inline-block">Events page</a
+    >.
+  </p>
+
+  <h3>Officers meeting</h3>
+  <p>
+    The club officer meet on the third Tuesday of every month at 6 PM. You can
+    find them at The Brass Tap - Crossroads, 11450 US-380 Suite 160, Cross
+    Roads, TX 76227, USA
+    <a
+      href="https://www.google.com/maps?hl=en&q=The+Brass+Tap+-+Crossroads,+11450+US-380+Suite+160,+Cross+Roads,+TX+76227,+USA&source=calendar"
+      target="_blank">Directions</a
+    >
+  </p>
+</div>
+<style>
+  #container {
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  #container h3 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    border-bottom: 2px solid #ffcc00;
+    padding-bottom: 0.5rem;
+  }
+
+  #container p {
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+
+  #container a {
+    color: #ffcc00;
+    text-decoration: underline;
+  }
+
+  #container a:hover {
+    color: #ffaa00;
+  }
+</style>
