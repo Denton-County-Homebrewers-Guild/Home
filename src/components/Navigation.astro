@@ -205,38 +205,40 @@
   }
 </style>
 
-<script>
+<script is:inline>
   // Keep dropdown open when hovering over menu
-  const dropdowns = document.querySelectorAll(".dropdown");
+  document.addEventListener("DOMContentLoaded", () => {
+    const dropdowns = document.querySelectorAll(".dropdown");
 
-  dropdowns.forEach((dropdown) => {
-    const menu = dropdown.querySelector(".dropdown-menu") as HTMLElement;
-    const toggle = dropdown.querySelector(".dropdown-toggle") as HTMLElement;
+    dropdowns.forEach((dropdown) => {
+      const menu = dropdown.querySelector(".dropdown-menu");
+      const toggle = dropdown.querySelector(".dropdown-toggle");
 
-    let isOpen = false;
+      let isOpen = false;
 
-    // Open on hover
-    dropdown.addEventListener("mouseenter", () => {
-      isOpen = true;
-      if (menu) menu.style.display = "block";
-    });
+      // Open on hover
+      dropdown.addEventListener("mouseenter", () => {
+        isOpen = true;
+        if (menu) menu.style.display = "block";
+      });
 
-    // Close on leave with slight delay
-    dropdown.addEventListener("mouseleave", () => {
-      isOpen = false;
-      setTimeout(() => {
-        if (!isOpen && menu) {
-          menu.style.display = "";
-        }
-      }, 100);
-    });
-
-    // Close on click outside
-    document.addEventListener("click", (e) => {
-      if (!dropdown.contains(e.target as Node)) {
+      // Close on leave with slight delay
+      dropdown.addEventListener("mouseleave", () => {
         isOpen = false;
-        if (menu) menu.style.display = "";
-      }
+        setTimeout(() => {
+          if (!isOpen && menu) {
+            menu.style.display = "";
+          }
+        }, 100);
+      });
+
+      // Close on click outside
+      document.addEventListener("click", (e) => {
+        if (!dropdown.contains(e.target)) {
+          isOpen = false;
+          if (menu) menu.style.display = "";
+        }
+      });
     });
   });
 </script>
