@@ -46,16 +46,197 @@
           Membership
         </a>
       </li>
-      <li class="nav-item" style="display: inline-block !important;">
-        <a
-          href="https://texasredcoat.com/"
-          class="nav-link"
-          style="color: white !important;"
-          target="_blank"
+      <li
+        class="nav-item dropdown"
+        style="display: inline-block !important; position: relative;"
+      >
+        <button
+          class="nav-link dropdown-toggle"
+          style="color: white !important; background: none; border: none; cursor: pointer; font-size: inherit; font-family: inherit; padding: 0;"
         >
           Competitions
-        </a>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="12"
+            height="12"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            style="display: inline-block; margin-left: 4px; vertical-align: middle;"
+          >
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+        <ul class="dropdown-menu">
+          <li>
+            <a
+              href="https://texasredcoat.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Texas Red Coat Competition
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.lonestarcircuit.com/qualcomps.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="nav-link"
+            >
+              Lone Star Circuit
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.masterhomebrewerprogram.com/"
+              target="_blank"
+              class="nav-link"
+            >
+              Master Homebrewer Program
+            </a>
+          </li>
+        </ul>
       </li>
     </ul>
   </nav>
 </header>
+
+<style>
+  .dropdown {
+    position: relative;
+  }
+
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    min-width: 240px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    padding: 0.5rem 0;
+    margin-top: 0.25rem;
+    list-style: none;
+    z-index: 1000;
+  }
+
+  /* Add padding to create overlap for smoother hover */
+  .dropdown-menu::before {
+    content: "";
+    position: absolute;
+    top: -0.25rem;
+    left: 0;
+    right: 0;
+    height: 0.25rem;
+  }
+
+  .dropdown:hover .dropdown-menu,
+  .dropdown:focus-within .dropdown-menu {
+    display: block;
+  }
+
+  .dropdown-menu li {
+    display: block !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .dropdown-menu a {
+    display: block;
+    padding: 0.75rem 1.25rem;
+    color: #374151 !important;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+    white-space: nowrap;
+  }
+
+  .dropdown-menu a:hover {
+    background-color: #f3f4f6;
+    color: #1f2937 !important;
+  }
+
+  .dropdown-toggle {
+    display: flex;
+    align-items: center;
+  }
+
+  /* Mobile responsive */
+  @media (max-width: 768px) {
+    .dropdown {
+      position: static;
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      right: 0;
+      left: 0;
+      box-shadow: none;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      margin-top: 0.25rem;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-in-out;
+    }
+
+    .dropdown:hover .dropdown-menu,
+    .dropdown:focus-within .dropdown-menu {
+      max-height: 500px;
+    }
+
+    .dropdown-menu::before {
+      display: none;
+    }
+
+    .dropdown-menu a {
+      color: white !important;
+      font-size: 0.9rem;
+      padding-left: 2rem;
+    }
+
+    .dropdown-menu a:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+  }
+</style>
+
+<script>
+  // Keep dropdown open when hovering over menu
+  const dropdowns = document.querySelectorAll(".dropdown");
+
+  dropdowns.forEach((dropdown) => {
+    const menu = dropdown.querySelector(".dropdown-menu") as HTMLElement;
+    const toggle = dropdown.querySelector(".dropdown-toggle") as HTMLElement;
+
+    let isOpen = false;
+
+    // Open on hover
+    dropdown.addEventListener("mouseenter", () => {
+      isOpen = true;
+      if (menu) menu.style.display = "block";
+    });
+
+    // Close on leave with slight delay
+    dropdown.addEventListener("mouseleave", () => {
+      isOpen = false;
+      setTimeout(() => {
+        if (!isOpen && menu) {
+          menu.style.display = "";
+        }
+      }, 100);
+    });
+
+    // Close on click outside
+    document.addEventListener("click", (e) => {
+      if (!dropdown.contains(e.target as Node)) {
+        isOpen = false;
+        if (menu) menu.style.display = "";
+      }
+    });
+  });
+</script>

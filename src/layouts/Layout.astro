@@ -8,18 +8,27 @@ import Navigation from "../components/Navigation.astro";
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>Denton County Homebrewers Guild</title>
 	</head>
 	<body>
-		<div class="page-wrapper">
-			<Navigation />
-			<main class="content">
+		<div class="viewport-container">
+			<!-- Top Navigation -->
+			<header class="site-header">
+				<Navigation />
+			</header>
+
+			<!-- Main Content -->
+			<main class="primary-content">
 				<slot />
 			</main>
-			<Footer />
+
+			<!-- Footer -->
+			<footer class="site-footer">
+				<Footer />
+			</footer>
 		</div>
 	</body>
 </html>
@@ -48,14 +57,30 @@ import Navigation from "../components/Navigation.astro";
 		z-index: -1;
 	}
 
-	.page-wrapper {
+	.viewport-container {
 		min-height: 100vh;
 		display: flex;
 		flex-direction: column;
-		padding-bottom: 2rem;
+		padding: 2rem;
+		gap: 2rem;
 	}
 
-	.content {
+	.site-header {
+		/* Top navigation area */
+	}
+
+	.primary-content {
 		flex: 1;
+	}
+
+	.site-footer {
+		/* Footer at bottom */
+	}
+
+	/* Responsive: Reduced padding on smaller screens */
+	@media (max-width: 768px) {
+		.viewport-container {
+			padding: 1rem;
+		}
 	}
 </style>
