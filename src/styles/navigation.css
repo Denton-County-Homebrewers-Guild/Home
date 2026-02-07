@@ -4,34 +4,50 @@
 
 /* navbar items */
 .navbar {
-  display: flex !important;
-  flex-direction: row !important;
-  align-items: center !important;
-  justify-content: space-between !important;
-  width: 100% !important;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .navbar-brand {
   @apply text-white dark:text-white text-xl font-semibold;
-  padding-left: 1rem !important;
-  margin-left: 1rem !important;
   image {
     @apply max-h-full max-w-full;
   }
 }
 
 .navbar-nav {
-  display: flex !important;
-  flex-direction: row !important;
-  gap: 1rem !important;
-  align-items: center !important;
-  padding-right: 2rem !important;
-  margin-right: 1rem !important;
-  list-style: none !important;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  align-items: center;
+  list-style: none;
 }
 
 .nav-item {
-  display: inline-block !important;
+  display: inline-block;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0 1rem;
+  }
+
+  .navbar-brand {
+    padding: 0;
+    margin: 0;
+  }
+
+  .navbar-nav {
+    /* Hidden by default on mobile - controlled by component styles */
+  }
+
+  .nav-item {
+    display: block;
+    width: 100%;
+  }
 }
 
 .nav-link {
