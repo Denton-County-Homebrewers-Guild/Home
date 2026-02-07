@@ -6,7 +6,7 @@ import react from '@astrojs/react';
 const isProd = process.env.NODE_ENV === 'production';
 
 export default defineConfig({
-  site: isProd ? 'https://username.github.io' : undefined,
+  site: isProd ? 'https://dchg.org' : undefined,
   base: isProd ? '/Home' : undefined,
   trailingSlash: 'always',
   integrations: [react()],
