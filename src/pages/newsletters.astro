@@ -1,0 +1,54 @@
+---
+import Layout from "../layouts/Layout.astro";
+import newsletters from "../config/newsletters.json";
+---
+
+<Layout class="pt-64">
+  <div class="w-full">
+    <h1
+      class="pb-4 w-full h-full rounded-md text-center bg-(0,0,0,0.6) text-white"
+    >
+      Newsletters
+    </h1>
+    <div
+      class="flex flex-col md:flex-row gap-2 min-h-screen bg-(0,0,0,0.6) text-white"
+    >
+      <div class="w-full md:w-1/3 border p-4 rounded-md">
+        <ul>
+          {
+            newsletters.map((newsletter) => (
+              <li key={newsletter.name}>
+                <a
+                  href={newsletter.url}
+                  rel="noopener noreferrer"
+                  class="newsletter-link"
+                >
+                  {newsletter.name}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+      <div class="w-full md:w-2/3 justify-center bg-(0,0,0,0.6)">
+        <iframe
+          class="w-full h-full min-h-screen border rounded-md"
+          src="https://docs.google.com/document/d/e/2PACX-1vSvpfylpR8dtDdmmC_iVf15SYEVpBH786tddm1zjdFRZvxP2PrcdgUizVo_IeUgpg/pub?embedded=true"
+          id="news-content"></iframe>
+      </div>
+    </div>
+  </div>
+</Layout>
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", function () {
+    const links = document.querySelectorAll(".newsletter-link");
+    links.forEach((link) => {
+      link.addEventListener("click", function (event) {
+        event.preventDefault();
+        const url = this.getAttribute("href").concat("?embedded=true");
+        const iframe = document.getElementById("news-content");
+        iframe.src = url;
+      });
+    });
+  });
+</script>
