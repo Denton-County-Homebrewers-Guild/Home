@@ -24,5 +24,8 @@
   },
   "devDependencies": {
     "@types/react": "^19.2.7"
+  },
+  "optionalDependencies": {
+    "@rollup/rollup-linux-x64-gnu": "*"
   }
 }

@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import ImageCarousel from "../components/ImageCarousel";
 ---
 
 <Layout>
@@ -18,6 +19,8 @@ import Layout from "../layouts/Layout.astro";
       </div>
     </div>
   </section>
+
+  <ImageCarousel client:load />
 </Layout>
 <style>
   #container {
