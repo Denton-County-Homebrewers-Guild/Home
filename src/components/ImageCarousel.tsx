@@ -1,21 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-
-const images = [
-  { src: "/images/bbo/BBO2025_1.jpg", alt: "BBO 2025" },
-  { src: "/images/bbo/BBO_2025_DCHG2.jpg", alt: "BBO 2025 - DCHG" },
-  { src: "/images/bbo/BBO_2025_TS.jpg", alt: "BBO 2025" },
-  { src: "/images/bbo/BBO_2025_hayes.jpg", alt: "BBO 2025" },
-  { src: "/images/bbo/BBO_2025_street.jpg", alt: "BBO 2025" },
-  { src: "/images/bbo/BBO_2025_street2.jpg", alt: "BBO 2025" },
-  { src: "/images/ironmash/IM_2025_1.jpg", alt: "Iron Mash 2025" },
-  { src: "/images/ironmash/IM_2025_2.jpg", alt: "Iron Mash 2025" },
-  { src: "/images/ironmash/IM_2025_3.jpg", alt: "Iron Mash 2025" },
-  { src: "/images/ironmash/IM_2025_4.jpg", alt: "Iron Mash 2025" },
-  { src: "/images/ironmash/IM_2025_5.jpg", alt: "Iron Mash 2025" },
-  { src: "/images/ironmash/IM_2025_6.jpg", alt: "Iron Mash 2025" },
-  { src: "/images/meetings/Jan_Mtg_1.jpg", alt: "Club Meeting" },
-  { src: "/images/meetings/Jan_mtg_2.jpg", alt: "Club Meeting" },
-];
+import images from "../config/carousel-images.json";
 
 const AUTOPLAY_INTERVAL = 4000;
 
@@ -36,6 +20,8 @@ export default function ImageCarousel() {
     const timer = setInterval(next, AUTOPLAY_INTERVAL);
     return () => clearInterval(timer);
   }, [paused, next]);
+
+  const slide = images[current];
 
   return (
     <div
@@ -75,6 +61,12 @@ export default function ImageCarousel() {
         <div className="carousel-counter">
           {current + 1} / {images.length}
         </div>
+      </div>
+
+      {/* Title & Caption */}
+      <div className="carousel-meta">
+        <p className="carousel-title">{slide.title}</p>
+        <p className="carousel-caption">{slide.caption}</p>
       </div>
 
       {/* Dot indicators */}
@@ -166,6 +158,29 @@ export default function ImageCarousel() {
           padding: 2px 8px;
           border-radius: 12px;
           z-index: 10;
+        }
+
+        .carousel-meta {
+          background: rgba(0, 0, 0, 0.6);
+          border-radius: 0 0 10px 10px;
+          padding: 0.75rem 1rem;
+          margin-top: -2px;
+          min-height: 70px;
+        }
+
+        .carousel-title {
+          color: #ffcc00;
+          font-size: 1rem;
+          font-weight: 600;
+          margin: 0 0 0.25rem;
+          line-height: 1.3;
+        }
+
+        .carousel-caption {
+          color: rgba(255,255,255,0.85);
+          font-size: 0.875rem;
+          margin: 0;
+          line-height: 1.5;
         }
 
         .carousel-dots {
