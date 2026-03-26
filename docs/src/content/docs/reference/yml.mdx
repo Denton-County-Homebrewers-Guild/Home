@@ -1,0 +1,119 @@
+---
+title: Getting Started With YML (YAML)
+description: Yet another Markupo Language
+sidebar:
+  # Set a custom label for the link
+  # label: Custom sidebar label
+  # Set a custom order for the link (lower numbers display higher up)
+  order: 1
+  # Add a badge to the link
+---
+import { FileTree } from '@astrojs/starlight/components';
+
+import { Aside } from '@astrojs/starlight/components';
+
+<Aside type="tip" title="from yaml.org">
+YAML: YAML Ain't Markup Language™
+
+What It Is:
+  YAML is a human-friendly data serialization
+  language for all programming languages.
+</Aside>
+
+
+It (YML) is sensitive to white space and formatting. Most of the parsers are awesome at telling us why, and where, our formatting is incorrect.
+
+Our site uses a bit of YML everywhere. It allows us to store data for our site in a more human readable format than CSV or other file types.
+
+The site uses it at the top of our pages, called `front-matter`
+
+This is for instance: 
+
+```YML
+---
+title: Welcome to Starlight
+description: Get started building your docs site with Starlight.
+template: splash # Remove or comment out this line to display the site sidebar on this page.
+hero:
+  tagline: Congrats on setting up a new Starlight project!
+  image:
+    file: ../../assets/houston.webp
+  actions:
+    - text: Example Guide
+      link: /docs/guides/example/
+      icon: right-arrow
+    - text: Read the Starlight docs
+      link: https://starlight.astro.build
+      icon: external
+      variant: minimal
+---
+```
+
+<FileTree>
+- docs
+  - src
+    - content
+      - **index.mdx**
+</FileTree>
+
+This sets up how the documentation pages work. We can change the displayed name on the documentation landing page by updating the title and we can describe it as we wish.
+
+#### Our Socials Data
+
+```json
+{
+  "main": [
+    {
+      "name": "facebook",
+      "icon": "FaFacebook",
+      "link": "https://www.facebook.com/DentonCountyHomebrewersGuild/"
+    },
+    {
+      "name": "youtube",
+      "icon": "FaYoutube",
+      "link": "https://www.youtube.com/@dchgadmin"
+    },
+    {
+      "name": "Contact Us",
+      "icon": "FaEnvelope",
+      "link": "mailto:dentoncountyhg@gmail.com"
+    }
+  ]
+}
+```
+
+#### That Data as yml
+
+```yml
+main:
+- name: facebook
+    icon: FaFacebook
+    link: "https://www.facebook.com/DentonCountyHomebrewersGuild/"
+  - name: youtube
+    icon: FaYoutube
+    link: "https://www.youtube.com/@dchgadmin"
+  - name: Contact Us
+    icon: FaEnvelope
+    link: "mailto:dentoncountyhg@gmail.com"
+```
+
+On a blog or post heavy site, the post would be in a markdown file with some yml `front-matter` like this:
+
+```yml
+---
+title: "How to build an Application with modern Technology"
+meta_title: ""
+description: "this is meta description"
+date: 2022-04-04T05:00:00Z
+image: "/images/image-placeholder.png"
+categories: ["Application", "Data"]
+author: "John Doe"
+tags: ["nextjs", "tailwind"]
+draft: false
+---
+```
+This enables using a shared template for the content and maintaining a consistent look and feel.
+
+YML allows us to embed data in a static site and not have to pay for a database service.
+
+You see? YAML sounds scare, but it's super useful for running a website.
