@@ -8,7 +8,7 @@ hero:
     file: ../../assets/houston.webp
   actions:
     - text: Example Guide
-      link: /guides/example/
+      link: /docs/guides/example/
       icon: right-arrow
     - text: Read the Starlight docs
       link: https://starlight.astro.build
@@ -18,18 +18,21 @@ hero:
 
 import { Card, CardGrid } from '@astrojs/starlight/components';
 
-## Next steps
+## Care and Feeding
 
 <CardGrid stagger>
-	<Card title="Update content" icon="pencil">
-		Edit `src/content/docs/index.mdx` to see this page change.
+	<Card title="Update Instructions" icon="pencil">
+		Edit `docs/src/content/docs/index.mdx` to see this page change.
+	</Card>
+	<Card title="Adding Newsletters" icon="pencil">
+		[Details](/docs/guides/add-newsletters).
 	</Card>
 	<Card title="Change page layout" icon="document">
-		Delete `template: splash` in `src/content/docs/index.mdx` to display a
+		Delete `template: splash` in `docs/src/content/docs/index.mdx` to display a
 		sidebar on this page.
 	</Card>
 	<Card title="Add new content" icon="add-document">
-		Add Markdown or MDX files to `src/content/docs` to create new pages.
+		Add Markdown or MDX files to `docs/src/content/docs` to create new pages.
 	</Card>
 	<Card title="Configure your site" icon="setting">
 		Edit your `sidebar` and other config in `astro.config.mjs`.

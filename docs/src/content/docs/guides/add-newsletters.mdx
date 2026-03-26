@@ -1,0 +1,68 @@
+---
+title: Adding Newsletters
+description: A guide for getting fresh newsletters to show on the site.
+sidebar:
+  order: 1
+---
+
+import { FileTree } from '@astrojs/starlight/components';
+import { Icon } from '@astrojs/starlight/components';
+
+### Save New Newsletters to Google Drive
+
+Add new newsletters to the club's *<a href="https://drive.google.com/drive/folders/1_18_wYspSAHnOGZcNu1BMeKzSu8Ri9AL" target="_blank">web archive</a>* folder
+
+
+### Share and Publish
+
+Open the PDF as a Google Doc and the Share and Publish to the web
+<FileTree>
+- File
+  - New
+  - Open
+  - Make a Copy
+  - **Share**
+    - Share with others
+    - **Publish to web**
+  - Email
+</FileTree> 
+
+|Step | Screenshot |
+|-----|-------|
+| Google Doc *Share* and *Publish to the Web* | <img width="635" height="284" alt="Share & Publish to the Web" align="left" src="https://github.com/user-attachments/assets/5074fbb9-2c56-46b1-8bf8-a267923ef6c4" /> |
+| Copy the link address from this dialog | <img width="548" height="432" alt="Published link address" align="left" src="https://github.com/user-attachments/assets/e017e35a-f5e9-41b9-ba76-ef0dd12b7166" /> |
+
+### Update Newletter JSON file
+
+In the <a href="https://github.com/Denton-County-Homebrewers-Guild/Home/edit/main/src/config/newsletters.json" target="_blank">GitHub repository</a> select the `newsletters.json` to edit file
+<FileTree>
+- src
+  - config
+    - dchg.code-workspace
+    - **newsletters.json**
+    - socials.json
+</FileTree>
+
+#### JSON sample
+
+The ordering of items in the `json` file is how they will show up on the website.
+
+```json
+  {
+    "name": "2026 March",
+    "url": "https://docs.google.com/document/d/e/2PACX-1vQlFc76FGMIETFAK0oJAIuyKOHoiCDV0sEdx79DcnIsBbi3uYHFoqNsyrY6HC_wj5d8hixxHPfXyMp6/pub"
+  },
+```
+
+
+| Step | Screenshot|
+| ---- | ---- |
+| If the link above doesn't open the editor, click the <Icon name="pencil" />  `pencil`  icon to make changes to the file | <img width="952" height="183" alt="image" src="https://github.com/user-attachments/assets/dbc9aef3-6cb5-4da0-a7cb-4d805eee6135" /> |
+| Click `Commit` to update the site or `Cancel` abort the changes | <img width="386" height="177" alt="image" src="https://github.com/user-attachments/assets/c9efeaf0-cf44-45af-9cf3-d8f1925ae24d" /> |
+
+
+
+
+**Committing the changes will start a background process to update the pages for the website, publish them, and make them available to the public.**
+
+**Action** history can be viewed by clicking the <a href="https://github.com/Denton-County-Homebrewers-Guild/Home/actions" target="_blank">Actions</a> button along the top menu.

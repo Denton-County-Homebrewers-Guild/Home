@@ -1,0 +1,41 @@
+---
+title: Posting Fresh Images
+description: How to get new images shown on the website
+sidebar:
+  order: 2
+---
+
+import { FileTree } from '@astrojs/starlight/components';
+
+
+### Adding Images
+Add image to the site by placing them under <a href="https://github.com/Denton-County-Homebrewers-Guild/Home/tree/main/public/images" target="_blank">'public/images'</a> in an appropriate folder.
+
+<FileTree>
+- public
+  - **images**
+</FileTree>
+
+<img width="374" height="360" alt="image" src="https://github.com/user-attachments/assets/1f240a6d-c684-4050-9bed-ad69ffd7c029" />
+
+
+### Making Images Showup
+
+Then go to 'src/config/carousel-images.json' and edit the data file. A sample of an entry from the site is shown below.
+Clicking the pencil icon will allow you to edit the file and include entries for new images.
+<img width="1087" height="131" alt="image" src="https://github.com/user-attachments/assets/a949de33-6837-4809-ae6d-4346f14ddf0a" />
+
+```json
+  {
+    "src": "/images/bbo/BBO_2025_DCHG2.jpg",
+    "alt": "Keith Green setting up the DCHG bar at BBO 2025",
+    "title": "DCHG at BBO 2025",
+    "caption": "Keith Green setting up the DCHG bar at Bluebonnet 2025"
+  },
+```
+* src - path to the image. Must match the folder names and capitalization
+* alt - text that screenreader use for visually impaired folks
+* title - what shows up in the yellow/gold
+* caption - the text at the bottom of the display
+
+<img width="844" height="597" alt="image" src="https://github.com/user-attachments/assets/b79652d8-0e50-4b2e-b357-b79bdcdea983" />
