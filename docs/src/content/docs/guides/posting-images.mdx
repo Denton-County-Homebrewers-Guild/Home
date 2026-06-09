@@ -9,15 +9,17 @@ import { FileTree } from '@astrojs/starlight/components';
 
 
 ### Adding Images
-Add image to the site by placing them under <a href="https://github.com/Denton-County-Homebrewers-Guild/Home/tree/main/public/images" target="_blank">'public/images'</a> in an appropriate folder.
+Add image to the site by placing them under <a href="https://github.com/Denton-County-Homebrewers-Guild/Home/tree/main/originals/images" target="_blank">'originals/images'</a> in an appropriate folder.
 
 <FileTree>
+- docs
+- originals
+  - **images** 
 - public
-  - **images**
 </FileTree>
 
-<img width="374" height="360" alt="image" src="https://github.com/user-attachments/assets/1f240a6d-c684-4050-9bed-ad69ffd7c029" />
-
+There is a build process that will optimize the images for use on the website and copy them over
+to the 'public/images' folder for us with a *.webp* file extension.
 
 ### Making Images Showup
 
