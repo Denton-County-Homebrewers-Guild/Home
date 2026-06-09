@@ -30,6 +30,9 @@ jobs:
       - name: Install main site dependencies
         run: npm ci
 
+      - name: Optimize carousel images
+        run: npm run optimize-images
+
       - name: Build main site
         run: npm run build
         env:

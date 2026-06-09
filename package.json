@@ -3,10 +3,11 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "astro dev",
+    "dev": "npm run optimize-images && astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "optimize-images": "node scripts/optimize-carousel-images.mjs"
   },
   "dependencies": {
     "@astrojs/react": "^4.4.2",
@@ -23,7 +24,8 @@
     "typescript": "^5.9.3"
   },
   "devDependencies": {
-    "@types/react": "^19.2.7"
+    "@types/react": "^19.2.7",
+    "sharp": "^0.34.5"
   },
   "optionalDependencies": {
     "@rollup/rollup-linux-x64-gnu": "*"

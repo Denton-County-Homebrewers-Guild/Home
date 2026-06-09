@@ -37,7 +37,7 @@ export default function ImageCarousel() {
             className={`carousel-slide${i === current ? " active" : ""}`}
             aria-hidden={i !== current}
           >
-            <img src={img.src} alt={img.alt} className="carousel-img" />
+            <img src={img.src.replace(/\.(jpe?g|png)$/i, ".webp")} alt={img.alt} className="carousel-img" loading={i === 0 ? "eager" : "lazy"} />
           </div>
         ))}
 
