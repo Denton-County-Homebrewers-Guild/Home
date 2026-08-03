@@ -1,0 +1,42 @@
+name: PR Checks
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install main site dependencies
+        run: npm ci
+
+      - name: Validate carousel-images.json
+        run: node -e "JSON.parse(require('fs').readFileSync('src/config/carousel-images.json', 'utf8')); console.log('carousel-images.json is valid JSON')"
+
+      - name: Optimize carousel images
+        run: npm run optimize-images
+
+      - name: Build main site
+        run: npm run build
+        env:
+          NODE_ENV: production
+
+      - name: Install docs dependencies
+        run: npm ci
+        working-directory: ./docs
+
+      - name: Build docs
+        run: npm run build
+        working-directory: ./docs
