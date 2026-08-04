@@ -35,6 +35,7 @@ Out of scope: files under `public/images/` that are not carousel photos (e.g. `l
 
 **`.github/workflows/pr-check.yml`** (edit)
 - Top-level `permissions.contents` changes from `read` to `write` (needed to push the fix commit back to the PR branch; safe here because contributors push branches directly into this org repo — there are no fork-based PRs to worry about).
+- The `Checkout` step needs `fetch-depth: 0` (or at minimum enough history to include `origin/main`) — `actions/checkout`'s default shallow clone won't have the `main` ref available for the `git diff ... origin/main...HEAD` comparison the script relies on.
 - New step **"Auto-move raw image uploads"** added right after `Install main site dependencies` and before `Validate carousel-images.json`:
   1. Run `node scripts/auto-move-uploaded-images.mjs`.
   2. If `git status --short` shows changes, configure a git identity (e.g. `github-actions[bot]`), commit with message `Auto-move raw image upload(s) to originals/`, and `git push` to the PR's head ref.
