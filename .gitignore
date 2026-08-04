@@ -25,3 +25,6 @@ pnpm-debug.log*
 
 # git worktrees for isolated agent workspaces
 .worktrees/
+
+# scratch workspace for subagent-driven-development (ledgers, briefs, reports)
+.superpowers/
