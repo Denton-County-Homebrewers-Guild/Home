@@ -5,7 +5,11 @@ on:
     branches: [main]
 
 permissions:
-  contents: read
+  contents: write
+
+concurrency:
+  group: pr-${{ github.head_ref }}
+  cancel-in-progress: true
 
 jobs:
   validate:
@@ -13,6 +17,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
 
       - name: Setup Node
         uses: actions/setup-node@v7
@@ -21,6 +28,24 @@ jobs:
 
       - name: Install main site dependencies
         run: npm ci
+
+      - name: Auto-move raw image uploads
+        if: github.event.pull_request.head.repo.full_name == github.repository
+        env:
+          BASE_REF: ${{ github.base_ref }}
+          HEAD_REF: ${{ github.head_ref }}
+        run: |
+          git fetch origin "$BASE_REF"
+          node scripts/auto-move-uploaded-images.mjs "origin/$BASE_REF"
+          if [ -n "$(git status --porcelain)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add public/images originals/images
+            git commit -m "Auto-move raw image upload(s) to originals/"
+            git push origin HEAD:"$HEAD_REF"
+          else
+            echo "No changes to commit."
+          fi
 
       - name: Validate carousel-images.json
         run: node -e "JSON.parse(require('fs').readFileSync('src/config/carousel-images.json', 'utf8')); console.log('carousel-images.json is valid JSON')"
