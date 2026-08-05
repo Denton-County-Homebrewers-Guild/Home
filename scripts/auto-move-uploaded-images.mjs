@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { execSync } from "node:child_process";
+import { execSync, execFileSync } from "node:child_process";
 import { existsSync, readdirSync, statSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -55,7 +55,7 @@ function main() {
       console.warn(`WARNING: ${destRel} already exists — overwriting with ${relPath}`);
     }
     console.log(`Moving ${relPath} -> ${destRel}`);
-    execSync(`git mv -f "${relPath}" "${destRel}"`, { cwd: root, stdio: "inherit" });
+    execFileSync("git", ["mv", "-f", relPath, destRel], { cwd: root, stdio: "inherit" });
   }
 }
 
