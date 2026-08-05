@@ -2,7 +2,7 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** When a PR adds a raw image (`.jpg`/`.jpeg`/`.png`/`.heic`) directly under `public/images/<category>/` for a known carousel category, CI automatically moves it to `originals/images/<category>/`, regenerates the optimized `.webp`, and pushes the fix back to the PR — no manual intervention required.
+**Goal:** When a PR adds a raw image (`.jpg`/`.jpeg`/`.png`) directly under `public/images/<category>/` for a known carousel category, CI automatically moves it to `originals/images/<category>/`, regenerates the optimized `.webp`, and pushes the fix back to the PR — no manual intervention required.
 
 **Architecture:** A new standalone Node script (`scripts/auto-move-uploaded-images.mjs`) detects and moves misplaced raw uploads using `git diff` + `git mv`. A new step in `.github/workflows/pr-check.yml` runs it before the existing validation steps, then commits and pushes any resulting changes back to the PR branch.
 
@@ -10,7 +10,7 @@
 
 ## Global Constraints
 
-- Raw extensions detected (case-insensitive): `jpg`, `jpeg`, `png`, `heic` — exact set, no others.
+- Raw extensions detected (case-insensitive): `jpg`, `jpeg`, `png` — exact set, no others.
 - Known categories = subdirectories that already exist under `originals/images/` (currently `meetings`, `bbo`, `ironmash`) — never hardcode this list; read it from the filesystem.
 - Only files matching `public/images/<category>/<filename>.<ext>` (exactly 4 path segments) are eligible. Root-level `public/images/*` files (`logo.png`, `beer-glass.jpg`, etc.) and subfolders not present under `originals/images/` are never touched.
 - Only newly-**added** files count (via `git diff --diff-filter=A`) — pre-existing files already committed to `public/images/` must never be flagged or moved.
@@ -44,7 +44,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = join(__dirname, "..");
 const originalsImagesDir = join(root, "originals", "images");
 
-const RAW_EXTENSIONS = new Set(["jpg", "jpeg", "png", "heic"]);
+const RAW_EXTENSIONS = new Set(["jpg", "jpeg", "png"]);
 
 function knownCategories() {
   return readdirSync(originalsImagesDir).filter((name) =>

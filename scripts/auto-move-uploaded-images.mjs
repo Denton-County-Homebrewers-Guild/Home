@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { execSync, execFileSync } from "node:child_process";
+import { execFileSync } from "node:child_process";
 import { existsSync, readdirSync, statSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -8,7 +8,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = join(__dirname, "..");
 const originalsImagesDir = join(root, "originals", "images");
 
-const RAW_EXTENSIONS = new Set(["jpg", "jpeg", "png", "heic"]);
+const RAW_EXTENSIONS = new Set(["jpg", "jpeg", "png"]);
 
 function knownCategories() {
   return readdirSync(originalsImagesDir).filter((name) =>
@@ -17,11 +17,12 @@ function knownCategories() {
 }
 
 function addedPublicImageFiles(baseRef) {
-  const output = execSync(
-    `git diff --diff-filter=A --name-only ${baseRef}...HEAD -- public/images`,
+  const output = execFileSync(
+    "git",
+    ["diff", "--diff-filter=A", "--name-only", "-z", `${baseRef}...HEAD`, "--", "public/images"],
     { cwd: root, encoding: "utf8" }
   );
-  return output.split("\n").filter((line) => line.trim().length > 0);
+  return output.split("\0").filter((path) => path.length > 0);
 }
 
 function parseCandidate(relPath, categories) {

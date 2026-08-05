@@ -28,13 +28,13 @@ Out of scope: files under `public/images/` that are not carousel photos (e.g. `l
   ```
   git diff --diff-filter=A --name-only origin/main...HEAD -- public/images
   ```
-- Filters that list to paths matching `public/images/<category>/<name>.<ext>` where `<category>` is in the known-category set and `<ext>` (case-insensitive) is one of `jpg`, `jpeg`, `png`, `heic`.
+- Filters that list to paths matching `public/images/<category>/<name>.<ext>` where `<category>` is in the known-category set and `<ext>` (case-insensitive) is one of `jpg`, `jpeg`, `png`.
 - For each match, runs `git mv public/images/<category>/<name>.<ext> originals/images/<category>/<name>.<ext>`. If a file already exists at the destination, it is overwritten and a warning is logged (no collision-avoidance renaming — acceptable given meeting photos are named per-event and collisions are unlikely).
 - Logs what it moved (or logs "nothing to move" and exits 0 if the diff had no matches). The script's own exit code is 0 in both cases; only a `git mv` failure (e.g. filesystem error) is a non-zero exit.
 - Files under `public/images/` root, or under any subfolder not already present in `originals/images/`, are left untouched.
 
 **`.github/workflows/pr-check.yml`** (edit)
-- Top-level `permissions.contents` changes from `read` to `write` (needed to push the fix commit back to the PR branch; safe here because contributors push branches directly into this org repo — there are no fork-based PRs to worry about).
+- Top-level `permissions.contents` changes from `read` to `write` (needed to push the fix commit back to the PR branch). Fork PRs do occur in this repo (e.g. #5, #6); the workflow checks out and validates the fork PR's actual head SHA, but does not auto-fix/push for it, since a fork-originated `GITHUB_TOKEN` has no push permission — a fork contributor who misplaces an upload still needs a maintainer to fix it manually, same as before this feature existed.
 - The `Checkout` step needs `fetch-depth: 0` (or at minimum enough history to include `origin/main`) — `actions/checkout`'s default shallow clone won't have the `main` ref available for the `git diff ... origin/main...HEAD` comparison the script relies on.
 - New step **"Auto-move raw image uploads"** added right after `Install main site dependencies` and before `Validate carousel-images.json`:
   1. Run `node scripts/auto-move-uploaded-images.mjs`.
